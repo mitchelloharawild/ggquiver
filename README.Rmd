@@ -1,0 +1,46 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figure/"
+)
+library(ggquiver)
+library(dplyr)
+```
+
+[![Travis-CI Build Status](https://travis-ci.org/mitchelloharawild/ggquiver.svg?branch=master)](https://travis-ci.org/mitchelloharawild/ggquiver)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
+[![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
+
+# ggquiver
+
+Quiver plots for ggplot2.
+
+## Installation
+
+The development version of ggquiver can be installed from Github using:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("mitchelloharawild/ggquiver")
+```
+
+## Usage
+
+**ggquiver** introduces a new geom `geom_quiver()`, which produces a quiver plot in *ggplot2*.
+
+```{r quiverplot}
+expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
+  mutate(u = cos(x),
+         v = sin(y)) %>%
+  ggplot(aes(x=x,y=y,u=u,v=v)) +
+  geom_quiver()
+```
