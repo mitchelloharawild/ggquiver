@@ -30,3 +30,13 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
 ```
 
 ![](man/figure/quiverplot-1.png)
+
+``` r
+library(ggmap)
+
+wind_data <- wind %>% filter(between(lon, -96, -93) & between(lat, 28.7, 30))
+qmplot(lon, lat, data=wind_data, extent="panel", geom = "blank", zoom=8, maptype = "toner-lite") + 
+  geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd))
+```
+
+![](man/figure/windplot-1.png)
