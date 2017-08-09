@@ -41,7 +41,7 @@ geom_quiver <- function(mapping = NULL, data = NULL,
 #' @export
 GeomQuiver <- ggproto("GeomQuiver", ggplot2::GeomSegment,
                      draw_panel = function(data, panel_params, coord, arrow = NULL, lineend = "butt", na.rm = FALSE) {
-                       trans <- coord$transform(data, panel_params) %>%
+                       trans <- CoordCartesian$transform(data, panel_params) %>%
                          mutate(arrowsize = sqrt((x-xend)^2 + (y-yend)^2)*0.5)
                        grid::segmentsGrob(
                          trans$x, trans$y, trans$xend, trans$yend,
