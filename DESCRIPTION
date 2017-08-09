@@ -7,7 +7,9 @@ Depends:
     ggplot2
 Imports:
     dplyr
-Suggests: testthat
+Suggests: 
+    ggmap,
+    testthat
 Authors@R: person("Mitchell", "O'Hara-Wild", email = "mail@mitchelloharawild.com", role = c("aut", "cre"))
 URL: https://github.com/mitchelloharawild/ggquiver
 BugReports: https://github.com/mitchelloharawild/ggquiver/issues
