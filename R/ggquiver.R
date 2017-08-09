@@ -1,6 +1,6 @@
 #' @keywords internal
 "_PACKAGE"
 
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #' @export
-magrittr::`%>%`
+dplyr::`%>%`
