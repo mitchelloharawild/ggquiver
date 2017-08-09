@@ -1,0 +1,18 @@
+Package: ggquiver
+Version: 0.1.0
+Title: Quiver Plots for 'ggplot2'
+Description: 'ggquiver' extends 'ggplot2' by adding functionality for creating quiver plots.
+Depends:
+    R (>= 3.2.0),
+    ggplot2
+Imports:
+    dplyr
+Suggests: testthat
+Authors@R: person("Mitchell", "O'Hara-Wild", email = "mail@mitchelloharawild.com", role = c("aut", "cre"))
+URL: https://github.com/mitchelloharawild/ggquiver
+BugReports: https://github.com/mitchelloharawild/ggquiver/issues
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+RoxygenNote: 6.0.1.9000
