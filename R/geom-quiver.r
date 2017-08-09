@@ -4,6 +4,7 @@
 #' Displays the direction and length of vectors on a graph.
 #'
 #' @inheritParams ggplot2::layer
+#' @param center If \code{FALSE} (the default), the vector lines will start at the specified x and y. If \code{TRUE}, the arrows will be centered about x and y.
 #'
 #' @examples
 #' library(dplyr)
@@ -23,6 +24,7 @@
 #' @export
 geom_quiver <- function(mapping = NULL, data = NULL,
                        stat = "quiver", position = "identity",
+                       center = FALSE,
                        na.rm = FALSE,
                        show.legend = NA,
                        inherit.aes = TRUE,
@@ -37,6 +39,7 @@ geom_quiver <- function(mapping = NULL, data = NULL,
     inherit.aes = inherit.aes,
     params = list(
       na.rm = na.rm,
+      center = center,
       ...
     )
   )

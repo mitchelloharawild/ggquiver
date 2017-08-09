@@ -11,6 +11,7 @@
 #' @export
 stat_quiver <- function(mapping = NULL, data = NULL,
                         geom = "quiver", position = "identity",
+                        center = FALSE,
                         na.rm = FALSE,
                         show.legend = NA,
                         inherit.aes = TRUE,
@@ -26,6 +27,7 @@ stat_quiver <- function(mapping = NULL, data = NULL,
     inherit.aes = inherit.aes,
     params = list(
       na.rm = na.rm,
+      center = center,
       ...
     )
   )
@@ -41,12 +43,14 @@ StatQuiver <- ggplot2::ggproto(
   "StatQuiver", ggplot2::Stat,
   required_aes = c("u", "v"),
 
-  compute_panel = function(self, data, scales, na.rm=FALSE) {
-    gridsize <- min(abs(diff(unique(data$x))), abs(diff(unique(data$y))))
+  compute_panel = function(self, data, scales, center=FALSE, na.rm=FALSE) {
+    gridsize <- min(abs(diff(unique(data$x))), abs(diff(unique(data$y))), na.rm = TRUE)
+    center <- if(center) 0.5 else 0
     data %>%
       filter(u!=0 | v!=0) %>%
       mutate(vecsize = sqrt(u^2 + v^2),
-             vecscale = gridsize/max(vecsize),
-             xend = x + u*vecscale, yend = y + v*vecscale)
+             vecscale = gridsize/max(vecsize, na.rm=TRUE),
+             xend = x + (1-center)*u*vecscale, yend = y + (1-center)*v*vecscale,
+             x = x - center*u*vecscale, y = y - center*v*vecscale)
   }
 )
