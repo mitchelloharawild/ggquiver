@@ -7,10 +7,11 @@
 #'
 #' @examples
 #'
-#'  ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
-#'    geom_quiver() +
-#'    borders("state") +
-#'    coord_fixed()
+#' expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
+#'   mutate(u = cos(x),
+#'          v = sin(y)) %>%
+#'   ggplot(aes(x=x,y=y,u=u,v=v)) +
+#'   geom_quiver()
 #'
 #' @importFrom ggplot2 layer
 #'
