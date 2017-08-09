@@ -32,10 +32,7 @@ stat_quiver <- function(mapping = NULL, data = NULL,
 }
 
 
-#' Stat quiver
-#'
-#' @format NULL
-#' @usage NULL
+#' @rdname geom_quiver
 #'
 #' @importFrom dplyr %>% filter mutate
 #'

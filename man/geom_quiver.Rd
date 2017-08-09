@@ -5,6 +5,7 @@
 \alias{geom_quiver}
 \alias{GeomQuiver}
 \alias{stat_quiver}
+\alias{StatQuiver}
 \title{Quiver plots for ggplot2}
 \format{An object of class \code{GeomQuiver} (inherits from \code{GeomSegment}, \code{Geom}, \code{ggproto}) of length 2.}
 \usage{
