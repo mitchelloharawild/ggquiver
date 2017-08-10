@@ -13,4 +13,8 @@ test_that("Simple trig quiver plot", {
   plotdata %>%
     ggplot(aes(x=x,y=y,u=u,v=v)) +
     geom_quiver(center=TRUE)
+
+  plotdata %>%
+    ggplot(aes(x=x,y=y,u=u,v=v)) +
+    geom_quiver(scale = NULL, center=TRUE)
 })

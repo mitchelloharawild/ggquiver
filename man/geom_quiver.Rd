@@ -10,13 +10,13 @@
 \format{An object of class \code{GeomQuiver} (inherits from \code{GeomSegment}, \code{Geom}, \code{ggproto}) of length 2.}
 \usage{
 geom_quiver(mapping = NULL, data = NULL, stat = "quiver",
-  position = "identity", center = FALSE, na.rm = FALSE,
+  position = "identity", center = FALSE, scale = 1, na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE, ...)
 
 GeomQuiver
 
 stat_quiver(mapping = NULL, data = NULL, geom = "quiver",
-  position = "identity", center = FALSE, na.rm = FALSE,
+  position = "identity", center = FALSE, scale = 1, na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE, ...)
 
 StatQuiver
@@ -48,6 +48,8 @@ layer, as a string.}
 a call to a position adjustment function.}
 
 \item{center}{If \code{FALSE} (the default), the vector lines will start at the specified x and y. If \code{TRUE}, the arrows will be centered about x and y.}
+
+\item{scale}{By default, vectors are scaled to fit within the grid. By specifying a numeric input here, the length of all arrows can be adjusted. Setting scale to \code{NULL} or 0 will prevent scaling the arrows.}
 
 \item{na.rm}{If \code{FALSE} (the default), removes missing values with a warning. If \code{TRUE} silently removes missing values.}
 
