@@ -51,7 +51,7 @@ StatQuiver <- ggplot2::ggproto(
     data %>%
       filter(u!=0 | v!=0) %>%
       mutate(vecsize = sqrt(u^2 + v^2),
-             vecscale = if(is.null(scale) | scale==0){1}else{gridsize/max(vecsize, na.rm=TRUE) * scale},
+             vecscale = if(is.null(scale)){1}else if(scale==0){1}else{gridsize/max(vecsize, na.rm=TRUE) * scale},
              xend = x + (1-center)*u*vecscale, yend = y + (1-center)*v*vecscale,
              x = x - center*u*vecscale, y = y - center*v*vecscale)
   }
