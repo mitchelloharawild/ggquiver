@@ -9,7 +9,7 @@ Quiver plots for ggplot2.
 Installation
 ------------
 
-The development version of ggquiver can be installed from Github using:
+The **development** version of *ggquiver* can be installed from Github using:
 
 ``` r
 # install.packages("devtools")
@@ -19,7 +19,7 @@ devtools::install_github("mitchelloharawild/ggquiver")
 Usage
 -----
 
-**ggquiver** introduces a new geom `geom_quiver()`, which produces a quiver plot in *ggplot2*.
+*ggquiver* introduces a new geom `geom_quiver()`, which produces a quiver plot in *ggplot2*.
 
 ``` r
 expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
@@ -33,10 +33,11 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
 
 ``` r
 library(ggmap)
+library(dplyr)
 
 wind_data <- wind %>% filter(between(lon, -96, -93) & between(lat, 28.7, 30))
 qmplot(lon, lat, data=wind_data, extent="panel", geom = "blank", zoom=8, maptype = "toner-lite") + 
-  geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd))
+  geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd), center=TRUE)
 ```
 
 ![](man/figure/windplot-1.png)
