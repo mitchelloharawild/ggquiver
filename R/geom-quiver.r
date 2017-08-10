@@ -7,17 +7,19 @@
 #' @param center If \code{FALSE} (the default), the vector lines will start at the specified x and y. If \code{TRUE}, the arrows will be centered about x and y.
 #'
 #' @examples
-#' library(dplyr)
+#' # Quiver plots of mathematical functions
 #' expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
-#'   mutate(u = cos(x),
-#'          v = sin(y)) %>%
-#'   ggplot(aes(x=x,y=y,u=u,v=v)) +
+#'   ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
 #'   geom_quiver()
 #'
+#' \dontrun{
+#' # Centering arrows is useful for plotting on maps.
+#' library(dplyr)
 #' library(ggmap)
 #' wind_data <- wind %>% filter(between(lon, -96, -93) & between(lat, 28.7, 30))
 #' qmplot(lon, lat, data=wind_data, extent="panel", geom = "blank", zoom=8, maptype = "toner-lite") +
-#'   geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd))
+#'   geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd), center=TRUE)
+#' }
 #'
 #' @importFrom ggplot2 layer
 #'

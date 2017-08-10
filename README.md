@@ -21,11 +21,11 @@ Usage
 
 *ggquiver* introduces a new geom `geom_quiver()`, which produces a quiver plot in *ggplot2*.
 
+Quiver plots for functions can easily be produced using ggplot aeshetics.
+
 ``` r
 expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
-  mutate(u = cos(x),
-         v = sin(y)) %>%
-  ggplot(aes(x=x,y=y,u=u,v=v)) +
+  ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
   geom_quiver()
 ```
 
