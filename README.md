@@ -39,7 +39,9 @@ ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
   borders("state")
 ```
 
-![](man/figure/sealplot-1.png) Quiver plots can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.
+![](man/figure/sealplot-1.png)
+
+Quiver plots can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.
 
 ``` r
 library(ggmap)
