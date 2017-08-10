@@ -31,6 +31,16 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
 
 ![](man/figure/quiverplot-1.png)
 
+The ggplot example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the scale is set to `NULL` to not rescale the vectors.
+
+``` r
+ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) + 
+  geom_quiver(scale=NULL) + 
+  borders("state")
+```
+
+![](man/figure/sealplot-1.png) Quiver plots can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.
+
 ``` r
 library(ggmap)
 library(dplyr)

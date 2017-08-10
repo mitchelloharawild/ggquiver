@@ -13,6 +13,11 @@
 #'   ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
 #'   geom_quiver()
 #'
+#' # Removing automatic scaling
+#' ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
+#'   geom_quiver(scale=NULL) +
+#'   borders("state")
+#'
 #' \dontrun{
 #' # Centering arrows is useful for plotting on maps.
 #' library(dplyr)
