@@ -6,7 +6,7 @@
 \alias{ggquiver-package}
 \title{ggquiver: Quiver Plots for 'ggplot2'}
 \description{
-'ggquiver' extends 'ggplot2' by adding functionality for creating quiver plots.
+An extension of 'ggplot2' to provide Quiver plots to visualise vector fields, map data and more.
 }
 \seealso{
 Useful links:
