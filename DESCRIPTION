@@ -1,7 +1,7 @@
 Package: ggquiver
 Version: 0.1.0
 Title: Quiver Plots for 'ggplot2'
-Description: 'ggquiver' extends 'ggplot2' by adding functionality for creating quiver plots.
+Description: An extension of 'ggplot2' to provide Quiver plots to visualise vector fields, map data and more.
 Depends:
     R (>= 3.2.0),
     ggplot2
