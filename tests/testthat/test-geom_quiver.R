@@ -20,5 +20,11 @@ test_that("Simple trig quiver plot", {
 
   plotdata %>%
     ggplot(aes(x=x,y=y,u=u,v=v)) +
-    geom_quiver(vecsize = NULL)
+    geom_quiver(vecsize = 0)
+
+  data.frame(x=rnorm(10), y=rnorm(10)) %>%
+    mutate(u = cos(x),
+           v = sin(y)) %>%
+    ggplot(aes(x=x,y=y,u=u,v=v)) +
+    geom_quiver()
 })

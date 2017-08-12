@@ -13,7 +13,7 @@ stat_quiver <- function(mapping = NULL, data = NULL,
                         geom = "quiver", position = "identity",
                         center = FALSE,
                         rescale = FALSE,
-                        vecsize = 1,
+                        vecsize = NULL,
                         na.rm = FALSE,
                         show.legend = NA,
                         inherit.aes = TRUE,
@@ -47,17 +47,22 @@ StatQuiver <- ggplot2::ggproto(
   "StatQuiver", ggplot2::Stat,
   required_aes = c("u", "v"),
 
-  compute_panel = function(self, data, scales, center=FALSE, rescale=FALSE, vecsize=1, na.rm=FALSE) {
+  compute_panel = function(self, data, scales, center=FALSE, rescale=FALSE, vecsize=NULL, na.rm=FALSE) {
     if(rescale){
       data <- data %>%
         mutate(u = as.numeric(scale(u)), v = as.numeric(scale(v)))
     }
-    gridsize <- min(abs(diff(unique(data$x))), abs(diff(unique(data$y))), na.rm = TRUE)
+    gridpoints <- c(abs(diff(sort(unique(data$x)))), abs(diff(sort(unique(data$y)))))
+    gridsize <- min(gridpoints, na.rm = TRUE)
+    if(is.null(vecsize)){
+      # Detect if x and y form a grid
+      vecsize <- if(length(unique(round(gridpoints, 2))) > 2) 0 else 1
+    }
     center <- if(center) 0.5 else 0
     data %>%
       filter(u!=0 | v!=0) %>%
       mutate(veclength = sqrt(u^2 + v^2),
-             vectorsize = if(is.null(vecsize)){1}else if(vecsize==0){1}else{gridsize/max(veclength, na.rm=TRUE) * vecsize},
+             vectorsize = if(vecsize==0){1}else{gridsize/max(veclength, na.rm=TRUE) * vecsize},
              xend = x + (1-center)*u*vectorsize, yend = y + (1-center)*v*vectorsize,
              x = x - center*u*vectorsize, y = y - center*v*vectorsize)
   }

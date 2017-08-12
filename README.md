@@ -21,7 +21,7 @@ Usage
 
 *ggquiver* introduces a new geom `geom_quiver()`, which produces a quiver plot in *ggplot2*.
 
-Quiver plots for functions can easily be produced using ggplot aeshetics.
+Quiver plots for functions can easily be produced using ggplot aeshetics. When a grid is detected, the size of the vectors are automatically adjusted to fit within the grid.
 
 ``` r
 expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
@@ -31,11 +31,11 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
 
 ![](man/figure/quiverplot-1.png)
 
-The ggplot example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the vecsize is set to `NULL` to not resize the vectors.
+The *ggplot2* example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the vecsize is set to zero to not resize the vectors.
 
 ``` r
 ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) + 
-  geom_quiver(vecsize=NULL) + 
+  geom_quiver(vecsize=0) + 
   borders("state")
 ```
 
