@@ -10,14 +10,14 @@
 \format{An object of class \code{GeomQuiver} (inherits from \code{GeomSegment}, \code{Geom}, \code{ggproto}) of length 2.}
 \usage{
 geom_quiver(mapping = NULL, data = NULL, stat = "quiver",
-  position = "identity", center = FALSE, vecsize = 1, na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, ...)
+  position = "identity", center = FALSE, rescale = FALSE, vecsize = 1,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)
 
 GeomQuiver
 
 stat_quiver(mapping = NULL, data = NULL, geom = "quiver",
-  position = "identity", center = FALSE, vecsize = 1, na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, ...)
+  position = "identity", center = FALSE, rescale = FALSE, vecsize = 1,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)
 
 StatQuiver
 }
@@ -48,6 +48,8 @@ layer, as a string.}
 a call to a position adjustment function.}
 
 \item{center}{If \code{FALSE} (the default), the vector lines will start at the specified x and y. If \code{TRUE}, the arrows will be centered about x and y.}
+
+\item{rescale}{If \code{FALSE} (the default), the vectors will not be rescaled. If \code{TRUE}, the vectors given by (u, v) will be rescaled using the \code{scale} function.}
 
 \item{vecsize}{By default, vectors are sized to fit within the grid. By specifying a numeric input here, the length of all arrows can be adjusted. Setting vecsize to \code{NULL} or zero will prevent scaling the arrows.}
 

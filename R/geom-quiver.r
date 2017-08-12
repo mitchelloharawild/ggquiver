@@ -5,6 +5,7 @@
 #'
 #' @inheritParams ggplot2::layer
 #' @param center If \code{FALSE} (the default), the vector lines will start at the specified x and y. If \code{TRUE}, the arrows will be centered about x and y.
+#' @param rescale If \code{FALSE} (the default), the vectors will not be rescaled. If \code{TRUE}, the vectors given by (u, v) will be rescaled using the \code{scale} function.
 #' @param vecsize By default, vectors are sized to fit within the grid. By specifying a numeric input here, the length of all arrows can be adjusted. Setting vecsize to \code{NULL} or zero will prevent scaling the arrows.
 #'
 #' @examples
@@ -33,6 +34,7 @@
 geom_quiver <- function(mapping = NULL, data = NULL,
                        stat = "quiver", position = "identity",
                        center = FALSE,
+                       rescale = FALSE,
                        vecsize = 1,
                        na.rm = FALSE,
                        show.legend = NA,
@@ -49,6 +51,7 @@ geom_quiver <- function(mapping = NULL, data = NULL,
     params = list(
       na.rm = na.rm,
       center = center,
+      rescale = rescale,
       vecsize = vecsize,
       ...
     )
