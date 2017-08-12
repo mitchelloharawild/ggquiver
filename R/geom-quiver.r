@@ -5,7 +5,7 @@
 #'
 #' @inheritParams ggplot2::layer
 #' @param center If \code{FALSE} (the default), the vector lines will start at the specified x and y. If \code{TRUE}, the arrows will be centered about x and y.
-#' @param scale By default, vectors are scaled to fit within the grid. By specifying a numeric input here, the length of all arrows can be adjusted. Setting scale to \code{NULL} or zero will prevent scaling the arrows.
+#' @param vecsize By default, vectors are sized to fit within the grid. By specifying a numeric input here, the length of all arrows can be adjusted. Setting vecsize to \code{NULL} or zero will prevent scaling the arrows.
 #'
 #' @examples
 #' # Quiver plots of mathematical functions
@@ -15,7 +15,7 @@
 #'
 #' # Removing automatic scaling
 #' ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
-#'   geom_quiver(scale=NULL) +
+#'   geom_quiver(vecsize=NULL) +
 #'   borders("state")
 #'
 #' \dontrun{
@@ -33,7 +33,7 @@
 geom_quiver <- function(mapping = NULL, data = NULL,
                        stat = "quiver", position = "identity",
                        center = FALSE,
-                       scale = 1,
+                       vecsize = 1,
                        na.rm = FALSE,
                        show.legend = NA,
                        inherit.aes = TRUE,
@@ -49,7 +49,7 @@ geom_quiver <- function(mapping = NULL, data = NULL,
     params = list(
       na.rm = na.rm,
       center = center,
-      scale = scale,
+      vecsize = vecsize,
       ...
     )
   )

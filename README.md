@@ -31,11 +31,11 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
 
 ![](man/figure/quiverplot-1.png)
 
-The ggplot example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the scale is set to `NULL` to not rescale the vectors.
+The ggplot example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the vecsize is set to `NULL` to not resize the vectors.
 
 ``` r
 ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) + 
-  geom_quiver(scale=NULL) + 
+  geom_quiver(vecsize=NULL) + 
   borders("state")
 ```
 

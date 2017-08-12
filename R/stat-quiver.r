@@ -12,7 +12,7 @@
 stat_quiver <- function(mapping = NULL, data = NULL,
                         geom = "quiver", position = "identity",
                         center = FALSE,
-                        scale = 1,
+                        vecsize = 1,
                         na.rm = FALSE,
                         show.legend = NA,
                         inherit.aes = TRUE,
@@ -29,7 +29,7 @@ stat_quiver <- function(mapping = NULL, data = NULL,
     params = list(
       na.rm = na.rm,
       center = center,
-      scale = scale,
+      vecsize = vecsize,
       ...
     )
   )
@@ -45,14 +45,14 @@ StatQuiver <- ggplot2::ggproto(
   "StatQuiver", ggplot2::Stat,
   required_aes = c("u", "v"),
 
-  compute_panel = function(self, data, scales, center=FALSE, scale=1, na.rm=FALSE) {
+  compute_panel = function(self, data, scales, center=FALSE, vecsize=1, na.rm=FALSE) {
     gridsize <- min(abs(diff(unique(data$x))), abs(diff(unique(data$y))), na.rm = TRUE)
     center <- if(center) 0.5 else 0
     data %>%
       filter(u!=0 | v!=0) %>%
-      mutate(vecsize = sqrt(u^2 + v^2),
-             vecscale = if(is.null(scale)){1}else if(scale==0){1}else{gridsize/max(vecsize, na.rm=TRUE) * scale},
-             xend = x + (1-center)*u*vecscale, yend = y + (1-center)*v*vecscale,
-             x = x - center*u*vecscale, y = y - center*v*vecscale)
+      mutate(veclength = sqrt(u^2 + v^2),
+             vectorsize = if(is.null(vecsize)){1}else if(vecsize==0){1}else{gridsize/max(veclength, na.rm=TRUE) * vecsize},
+             xend = x + (1-center)*u*vectorsize, yend = y + (1-center)*v*vectorsize,
+             x = x - center*u*vectorsize, y = y - center*v*vectorsize)
   }
 )
