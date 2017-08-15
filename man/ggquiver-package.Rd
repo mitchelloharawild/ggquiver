@@ -8,7 +8,7 @@
 \description{
 An extension of 'ggplot2' to provide quiver plots to visualise vector fields.
 This functionality is implemented using a geom to produce a new graphical layer, which
-allows aesthetic options. This layer can be overlaid on a map to improve visualisations
+allows aesthetic options. This layer can be overlaid on a map to improve visualisation
 of mapped data.
 }
 \seealso{
