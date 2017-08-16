@@ -29,7 +29,7 @@ Quiver plots for ggplot2.
 The **stable** version can be installed from CRAN:
 
 ```{r, eval = FALSE}
-install.packages("rwalkr")
+install.packages("ggquiver")
 ```
 
 The **development** version can be installed from Github using:

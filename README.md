@@ -12,7 +12,7 @@ Installation
 The **stable** version can be installed from CRAN:
 
 ``` r
-install.packages("rwalkr")
+install.packages("ggquiver")
 ```
 
 The **development** version can be installed from Github using:
