@@ -1,3 +1,5 @@
+# Version 0.2.0 (DEV)
+
 # Version 0.1.0 (9 August 2017)
 * Added automatic grid detection
 * Added a `NEWS.md`.
