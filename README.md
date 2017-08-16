@@ -9,7 +9,13 @@ Quiver plots for ggplot2.
 Installation
 ------------
 
-The **development** version of *ggquiver* can be installed from Github using:
+The **stable** version can be installed from CRAN:
+
+``` r
+install.packages("rwalkr")
+```
+
+The **development** version can be installed from Github using:
 
 ``` r
 # install.packages("devtools")
