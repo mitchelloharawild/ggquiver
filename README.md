@@ -15,7 +15,7 @@ The **stable** version can be installed from CRAN:
 install.packages("ggquiver")
 ```
 
-The **development** version can be installed from Github using:
+The **development** version can be installed from GitHub using:
 
 ``` r
 # install.packages("devtools")
@@ -47,7 +47,7 @@ ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
 
 ![](man/figure/sealplot-1.png)
 
-Quiver plots can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.
+Quiver plot arrows can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.
 
 ``` r
 library(ggmap)
