@@ -35,7 +35,7 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
   geom_quiver()
 ```
 
-![](man/figure/quiverplot-1.png)
+![](README_files/figure-markdown_github/quiverplot-1.png)
 
 The *ggplot2* example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the vecsize is set to zero to not resize the vectors.
 
@@ -45,7 +45,7 @@ ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
   borders("state")
 ```
 
-![](man/figure/sealplot-1.png)
+![](README_files/figure-markdown_github/sealplot-1.png)
 
 Quiver plot arrows can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.
 
@@ -58,4 +58,4 @@ qmplot(lon, lat, data=wind_data, extent="panel", geom = "blank", zoom=8, maptype
   geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd), center=TRUE)
 ```
 
-![](man/figure/windplot-1.png)
+![](README_files/figure-markdown_github/windplot-1.png)
