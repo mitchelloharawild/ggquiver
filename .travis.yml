@@ -2,6 +2,7 @@ language: R
 cache: packages
 
 after_success:
+  - R CMD INSTALL .
   - Rscript -e 'pkgdown::build_site()'
 
 deploy:
