@@ -13,6 +13,7 @@ Imports:
 Suggests: 
     ggmap,
     maps,
+    pkgdown,
     testthat
 Authors@R: person("Mitchell", "O'Hara-Wild", email = "mail@mitchelloharawild.com", role = c("aut", "cre"))
 URL: https://github.com/mitchelloharawild/ggquiver
