@@ -9,6 +9,7 @@ output:
 ```{r, echo = FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  fig.path = "man/figures/README-",
   comment = "#>"
 )
 library(ggquiver)
