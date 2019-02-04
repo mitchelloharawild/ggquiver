@@ -1,5 +1,5 @@
 Package: ggquiver
-Version: 0.2.0.9000
+Version: 0.2.0
 Title: Quiver Plots for 'ggplot2'
 Description: An extension of 'ggplot2' to provide quiver plots to visualise vector fields. 
     This functionality is implemented using a geom to produce a new graphical layer, which
