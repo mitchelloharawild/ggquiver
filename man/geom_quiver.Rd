@@ -89,6 +89,7 @@ Displays the direction and length of vectors on a graph.
 }
 
 \examples{
+library(ggplot2)
 # Quiver plots of mathematical functions
 expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) \%>\%
   ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +

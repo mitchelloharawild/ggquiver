@@ -9,6 +9,7 @@
 #' @param vecsize By default (NULL), vectors sizing is automatically determined. If a grid can be identified, they will be scaled to the grid, if not, the vectors will not be scaled. By specifying a numeric input here, the length of all arrows can be adjusted. Setting vecsize to zero will prevent scaling the arrows.
 #'
 #' @examples
+#' library(ggplot2)
 #' # Quiver plots of mathematical functions
 #' expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
 #'   ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
