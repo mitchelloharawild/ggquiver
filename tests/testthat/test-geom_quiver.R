@@ -2,6 +2,7 @@ library(dplyr)
 context("geom_quiver")
 
 test_that("Simple trig quiver plot", {
+  library(ggplot2)
   plotdata <- expand.grid(x = seq(0, pi, pi / 12), y = seq(0, pi, pi / 12)) %>%
     mutate(
       u = cos(x),
