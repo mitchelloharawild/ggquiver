@@ -16,7 +16,8 @@ Suggests:
     pkgdown,
     testthat
 Authors@R: person("Mitchell", "O'Hara-Wild", email = "mail@mitchelloharawild.com", role = c("aut", "cre"))
-URL: https://github.com/mitchelloharawild/ggquiver
+URL: https://github.com/mitchelloharawild/ggquiver,
+    http://pkg.mitchelloharawild.com/ggquiver
 BugReports: https://github.com/mitchelloharawild/ggquiver/issues
 License: GPL-3
 Encoding: UTF-8
