@@ -1,4 +1,4 @@
-# ggquiver (development version)
+# ggquiver 0.3.0 (29 October 2021)
 * Improved handling of non cartesian coordinate systems.
 * Fixed issue with plotting arrows on `ggmap::qmplot()` (#7).
 * Performance improvements.
