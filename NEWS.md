@@ -1,3 +1,5 @@
+# ggquiver (development version)
+
 # Version 0.2.0 (5 February 2019)
 * Changed ggplot2 to import
 * Updated README to reflect ggmap changes
