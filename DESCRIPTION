@@ -17,10 +17,9 @@ Suggests:
     testthat
 Authors@R: person("Mitchell", "O'Hara-Wild", email = "mail@mitchelloharawild.com", role = c("aut", "cre"))
 URL: https://github.com/mitchelloharawild/ggquiver,
-    http://pkg.mitchelloharawild.com/ggquiver
+    https://pkg.mitchelloharawild.com/ggquiver/
 BugReports: https://github.com/mitchelloharawild/ggquiver/issues
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 ByteCompile: true
 RoxygenNote: 7.1.2
