@@ -1,4 +1,7 @@
 # ggquiver (development version)
+* Improved handling of non cartesian coordinate systems.
+* Fixed issue with plotting arrows on `ggmap::qmplot()` (#7).
+* Performance improvements.
 
 # Version 0.2.0 (5 February 2019)
 * Changed ggplot2 to import

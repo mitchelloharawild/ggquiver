@@ -65,18 +65,14 @@ geom_quiver <- function(mapping = NULL, data = NULL,
 GeomQuiver <- ggproto(
   "GeomQuiver", ggplot2::GeomSegment,
   draw_panel = function(data, panel_params, coord, arrow = NULL, lineend = "butt", na.rm = FALSE) {
-    trans <- CoordCartesian$transform(data, panel_params) %>%
-      mutate(arrowsize = sqrt((x - xend) ^ 2 + (y - yend) ^ 2) * 0.5)
-    grid::segmentsGrob(
-      trans$x, trans$y, trans$xend, trans$yend,
-      default.units = "native",
-      gp = grid::gpar(
-        col = alpha(trans$colour, trans$alpha),
-        lwd = trans$size * .pt,
-        lty = trans$linetype,
-        lineend = lineend
-      ),
-      arrow = grid::arrow(length = unit(trans$arrowsize, "npc"))
+    # Compute appropriate arrow size
+    data$arrowsize <- with(ggplot2::CoordCartesian$transform(data, panel_params),
+                           sqrt((x - xend) ^ 2 + (y - yend) ^ 2) * 0.5)
+    # Re-use segments to produce arrows
+    ggplot2::GeomSegment$draw_panel(
+      data, panel_params, coord,
+      arrow = grid::arrow(length = unit(data$arrowsize, "npc")),
+      lineend = lineend
     )
   }
 )
