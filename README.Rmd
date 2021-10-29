@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -22,7 +20,10 @@ library(dplyr)
 
 # ggquiver
 
-Quiver plots for ggplot2.
+Quiver plots for ggplot2. An extension of 'ggplot2' to provide quiver plots to 
+visualise vector fields. This functionality is implemented using a geom to 
+produce a new graphical layer, which allows aesthetic options. This layer can 
+be overlaid on a map to improve visualisation of mapped data.
 
 ## Installation
 
@@ -35,8 +36,8 @@ install.packages("ggquiver")
 The **development** version can be installed from GitHub using:
 
 ```{r, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("mitchelloharawild/ggquiver")
+# install.packages("remotes")
+remotes::install_github("mitchelloharawild/ggquiver")
 ```
 
 ## Usage
@@ -46,6 +47,8 @@ devtools::install_github("mitchelloharawild/ggquiver")
 Quiver plots for functions can easily be produced using ggplot aeshetics. When a grid is detected, the size of the vectors are automatically adjusted to fit within the grid.
 
 ```{r quiverplot}
+library(ggplot2)
+library(ggquiver)
 expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
   ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
   geom_quiver()
