@@ -114,8 +114,8 @@ Displays the direction and length of vectors on a graph.
 \examples{
 library(ggplot2)
 # Quiver plots of mathematical functions
-expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) \%>\%
-  ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
+field <- expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12))
+ggplot(field, aes(x=x,y=y,u=cos(x),v=sin(y))) +
   geom_quiver()
 
 # Removing automatic scaling
@@ -123,14 +123,13 @@ ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
   geom_quiver(vecsize=NULL) +
   borders("state")
 
-\dontrun{
+\dontshow{if (requireNamespace("dplyr") && requireNamespace("ggmap")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Centering arrows is useful for plotting on maps.
 library(dplyr)
 library(ggmap)
 wind_data <- wind \%>\% filter(between(lon, -96, -93) & between(lat, 28.7, 30))
 qmplot(lon, lat, data=wind_data, extent="panel", geom = "blank", zoom=8, maptype = "toner-lite") +
   geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd), center=TRUE)
-}
-
+\dontshow{\}) # examplesIf}
 }
 \keyword{datasets}

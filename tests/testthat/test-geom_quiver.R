@@ -1,3 +1,5 @@
+skip_if_not_installed("dplyr")
+
 library(dplyr)
 context("geom_quiver")
 

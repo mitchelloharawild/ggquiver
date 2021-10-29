@@ -39,8 +39,6 @@ stat_quiver <- function(mapping = NULL, data = NULL,
 
 #' @rdname geom_quiver
 #'
-#' @importFrom dplyr %>% filter mutate
-#'
 #' @export
 StatQuiver <- ggplot2::ggproto(
   "StatQuiver", ggplot2::Stat,
@@ -48,8 +46,8 @@ StatQuiver <- ggplot2::ggproto(
 
   compute_panel = function(self, data, scales, center=FALSE, rescale=FALSE, vecsize=NULL, na.rm=FALSE) {
     if (rescale) {
-      data <- data %>%
-        mutate(u = as.numeric(scale(u)), v = as.numeric(scale(v)))
+      data$u <- as.numeric(scale(data$u))
+      data$v <- as.numeric(scale(data$v))
     }
     gridpoints <- c(abs(diff(sort(unique(data$x)))), abs(diff(sort(unique(data$y)))))
     gridsize <- min(gridpoints, na.rm = TRUE)
@@ -58,17 +56,12 @@ StatQuiver <- ggplot2::ggproto(
       vecsize <- if (length(unique(round(gridpoints, 2))) > 2) 0 else 1
     }
     center <- if (center) 0.5 else 0
-    data %>%
-      filter(u != 0 | v != 0) %>%
-      mutate(
-        veclength = sqrt(u ^ 2 + v ^ 2),
-        vectorsize = if (vecsize == 0) {
-          1
-        } else {
-          gridsize / max(veclength, na.rm = TRUE) * vecsize
-        },
-        xend = x + (1 - center) * u * vectorsize, yend = y + (1 - center) * v * vectorsize,
-        x = x - center * u * vectorsize, y = y - center * v * vectorsize
-      )
+    data <- data[with(data, u != 0 | v != 0),]
+    data$veclength <- with(data, sqrt(u ^ 2 + v ^ 2))
+    data$vectorsize <-  if (data$vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
+    data$xend <- with(data, x + (1 - center) * u * vectorsize)
+    data$yend <- with(data, y + (1 - center) * v * vectorsize)
+    data$x <- with(data, x - center * u * vectorsize, y = y - center * v * vectorsize)
+    data
   }
 )
