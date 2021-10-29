@@ -8,3 +8,4 @@
 ^docs$
 ^\.github$
 ^pkgdown$
+^CRAN-RELEASE$
