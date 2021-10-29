@@ -14,9 +14,11 @@ library(ggquiver)
 library(dplyr)
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/mitchelloharawild/ggquiver.svg?branch=master)](https://travis-ci.org/mitchelloharawild/ggquiver)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/workflows/R-CMD-check/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
 [![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
+<!-- badges: end -->
 
 # ggquiver
 
