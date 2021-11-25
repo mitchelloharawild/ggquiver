@@ -1,4 +1,4 @@
-# ggquiver (development version)
+# ggquiver 0.3.1
 * Fixed issue with plotting resized vectors using the `vecsize` option (#8).
 
 # ggquiver 0.3.0 (29 October 2021)
