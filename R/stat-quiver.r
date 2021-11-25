@@ -58,7 +58,7 @@ StatQuiver <- ggplot2::ggproto(
     center <- if (center) 0.5 else 0
     data <- data[with(data, u != 0 | v != 0),]
     data$veclength <- with(data, sqrt(u ^ 2 + v ^ 2))
-    data$vectorsize <-  if (data$vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
+    data$vectorsize <-  if (vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
     data$xend <- with(data, x + (1 - center) * u * vectorsize)
     data$yend <- with(data, y + (1 - center) * v * vectorsize)
     data$x <- with(data, x - center * u * vectorsize, y = y - center * v * vectorsize)
