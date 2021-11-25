@@ -12,6 +12,7 @@ An extension of 'ggplot2' to provide quiver plots to visualise vector fields. Th
 Useful links:
 \itemize{
   \item \url{https://github.com/mitchelloharawild/ggquiver}
+  \item \url{https://pkg.mitchelloharawild.com/ggquiver/}
   \item Report bugs at \url{https://github.com/mitchelloharawild/ggquiver/issues}
 }
 
