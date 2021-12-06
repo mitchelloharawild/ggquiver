@@ -1,3 +1,6 @@
+# ggquiver (development version)
+* Improve usage of plot coordinate system when scaling arrow size (#9).
+
 # ggquiver 0.3.1 (25 November 2021)
 * Fixed issue with plotting resized vectors using the `vecsize` option (#8).
 
