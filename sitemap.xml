@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://pkg.mitchelloharawild.com/ggquiver/404.html</loc>
+  </url>
+  <url>
+    <loc>http://pkg.mitchelloharawild.com/ggquiver/authors.html</loc>
+  </url>
+  <url>
     <loc>http://pkg.mitchelloharawild.com/ggquiver/index.html</loc>
+  </url>
+  <url>
+    <loc>http://pkg.mitchelloharawild.com/ggquiver/news/index.html</loc>
   </url>
   <url>
     <loc>http://pkg.mitchelloharawild.com/ggquiver/reference/geom_quiver.html</loc>
   </url>
   <url>
     <loc>http://pkg.mitchelloharawild.com/ggquiver/reference/ggquiver-package.html</loc>
+  </url>
+  <url>
+    <loc>http://pkg.mitchelloharawild.com/ggquiver/reference/index.html</loc>
   </url>
 </urlset>

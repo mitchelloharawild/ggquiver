@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,18 +36,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ggquiver</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/mitchelloharawild/ggquiver/">
+  <a href="https://github.com/mitchelloharawild/ggquiver/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -74,47 +70,47 @@
   <div class="contents col-md-9">
 
 
-<div id="ggquiver" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#ggquiver" class="anchor"></a>ggquiver</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="ggquiver">ggquiver<a class="anchor" aria-label="anchor" href="#ggquiver"></a>
+</h1></div>
 <p>Quiver plots for ggplot2. An extension of ‘ggplot2’ to provide quiver plots to visualise vector fields. This functionality is implemented using a geom to produce a new graphical layer, which allows aesthetic options. This layer can be overlaid on a map to improve visualisation of mapped data.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>The <strong>stable</strong> version can be installed from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggquiver"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ggquiver"</span><span class="op">)</span></code></pre></div>
 <p>The <strong>development</strong> version can be installed from GitHub using:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mitchelloharawild/ggquiver"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p><em>ggquiver</em> introduces a new geom <code><a href="reference/geom_quiver.html">geom_quiver()</a></code>, which produces a quiver plot in <em>ggplot2</em>.</p>
 <p>Quiver plots for functions can easily be produced using ggplot aeshetics. When a grid is detected, the size of the vectors are automatically adjusted to fit within the grid.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mitchelloharawild/ggquiver">ggquiver</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">pi</span>,<span class="va">pi</span><span class="op">/</span><span class="fl">12</span><span class="op">)</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">pi</span>,<span class="va">pi</span><span class="op">/</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,u<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,v<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mitchelloharawild/ggquiver" class="external-link">ggquiver</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">pi</span>,<span class="va">pi</span><span class="op">/</span><span class="fl">12</span><span class="op">)</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">pi</span>,<span class="va">pi</span><span class="op">/</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,u<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,v<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="reference/geom_quiver.html">geom_quiver</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-quiverplot-1.png"><!-- --></p>
 <p>The <em>ggplot2</em> example for seal movements is easily reproduced, with appropriately scaled arrowhead sizes. Here, the vecsize is set to zero to not resize the vectors.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">seals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">long</span>, y<span class="op">=</span><span class="va">lat</span>, u<span class="op">=</span><span class="va">delta_long</span>, v<span class="op">=</span><span class="va">delta_lat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">seals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">long</span>, y<span class="op">=</span><span class="va">lat</span>, u<span class="op">=</span><span class="va">delta_long</span>, v<span class="op">=</span><span class="va">delta_lat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="reference/geom_quiver.html">geom_quiver</a></span><span class="op">(</span>vecsize<span class="op">=</span><span class="fl">0</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/borders.html">borders</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/borders.html" class="external-link">borders</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-sealplot-1.png"><!-- --></p>
 <p>Quiver plot arrows can be centered about x and y coordinates, which is useful when working with maps and scaled vectors.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dkahle/ggmap">ggmap</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dkahle/ggmap" class="external-link">ggmap</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
-<span class="va">wind_data</span> <span class="op">&lt;-</span> <span class="va">wind</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span><span class="op">(</span><span class="va">lon</span>, <span class="op">-</span><span class="fl">96</span>, <span class="op">-</span><span class="fl">93</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span><span class="op">(</span><span class="va">lat</span>, <span class="fl">28.7</span>, <span class="fl">30</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/ggmap/man/qmplot.html">qmplot</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, data<span class="op">=</span><span class="va">wind_data</span>, extent<span class="op">=</span><span class="st">"panel"</span>, geom <span class="op">=</span> <span class="st">"blank"</span>, zoom<span class="op">=</span><span class="fl">8</span>, maptype <span class="op">=</span> <span class="st">"toner-lite"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="reference/geom_quiver.html">geom_quiver</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>u<span class="op">=</span><span class="va">delta_lon</span>, v<span class="op">=</span><span class="va">delta_lat</span>, colour <span class="op">=</span> <span class="va">spd</span><span class="op">)</span>, center<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="va">wind_data</span> <span class="op">&lt;-</span> <span class="va">wind</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html" class="external-link">between</a></span><span class="op">(</span><span class="va">lon</span>, <span class="op">-</span><span class="fl">96</span>, <span class="op">-</span><span class="fl">93</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html" class="external-link">between</a></span><span class="op">(</span><span class="va">lat</span>, <span class="fl">28.7</span>, <span class="fl">30</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/ggmap/man/qmplot.html" class="external-link">qmplot</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span>, data<span class="op">=</span><span class="va">wind_data</span>, extent<span class="op">=</span><span class="st">"panel"</span>, geom <span class="op">=</span> <span class="st">"blank"</span>, zoom<span class="op">=</span><span class="fl">8</span>, maptype <span class="op">=</span> <span class="st">"toner-lite"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="reference/geom_quiver.html">geom_quiver</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>u<span class="op">=</span><span class="va">delta_lon</span>, v<span class="op">=</span><span class="va">delta_lat</span>, colour <span class="op">=</span> <span class="va">spd</span><span class="op">)</span>, center<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-windplot-1.png"><!-- --></p>
 </div>
 </div>
@@ -123,47 +119,57 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=ggquiver">https://​cloud.r-project.org/​package=ggquiver</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/mitchelloharawild/ggquiver/">https://​github.com/​mitchelloharawild/​ggquiver/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/mitchelloharawild/ggquiver/issues">https://​github.com/​mitchelloharawild/​ggquiver/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=ggquiver" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/mitchelloharawild/ggquiver/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/mitchelloharawild/ggquiver/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing ggquiver</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Mitchell O'Hara-Wild <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/mitchelloharawild/ggquiver/actions"><img src="https://github.com/mitchelloharawild/ggquiver/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://cran.r-project.org/package=ggquiver"><img src="http://www.r-pkg.org/badges/version/ggquiver" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://cran.r-project.org/package=ggquiver"><img src="http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen" alt="Downloads"></a></li>
+<li><a href="https://github.com/mitchelloharawild/ggquiver/actions" class="external-link"><img src="https://github.com/mitchelloharawild/ggquiver/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://cran.r-project.org/package=ggquiver" class="external-link"><img src="http://www.r-pkg.org/badges/version/ggquiver" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=ggquiver" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen" alt="Downloads"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Mitchell O'Hara-Wild.</p>
+  <p></p>
+<p>Developed by Mitchell O’Hara-Wild.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -171,6 +177,8 @@
 
   
 
+
+  
 
   </body>
 </html>
