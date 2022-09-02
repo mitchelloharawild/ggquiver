@@ -1,2 +1,12 @@
 url: http://pkg.mitchelloharawild.com/ggquiver
 
+template:
+  params:
+    bootswatch: cosmo
+  includes:
+    in_header: |
+      <script defer data-domain="pkg.mitchelloharawild.com/ggquiver" src="https://track.mitchelloharawild.com/js/plausible.js"></script>
+
+authors:
+  Mitchell O'Hara-Wild:
+    href: https://mitchelloharawild.com
