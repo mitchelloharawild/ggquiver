@@ -11,8 +11,8 @@ Imports:
     ggplot2
 Suggests: 
     dplyr,
-    ggmap,
     maps,
+    sf,
     pkgdown,
     testthat
 Authors@R: person("Mitchell", "O'Hara-Wild", email = "mail@mitchelloharawild.com", role = c("aut", "cre"))
@@ -22,4 +22,4 @@ BugReports: https://github.com/mitchelloharawild/ggquiver/issues
 License: GPL-3
 Encoding: UTF-8
 ByteCompile: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3

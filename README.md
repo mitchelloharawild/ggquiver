@@ -3,7 +3,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/workflows/R-CMD-check/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
 [![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
 <!-- badges: end -->
 
@@ -65,12 +65,9 @@ Quiver plot arrows can be centered about x and y coordinates, which is
 useful when working with maps and scaled vectors.
 
 ``` r
-library(ggmap)
-library(dplyr)
-
-wind_data <- wind %>% filter(between(lon, -96, -93) & between(lat, 28.7, 30))
-qmplot(lon, lat, data=wind_data, extent="panel", geom = "blank", zoom=8, maptype = "toner-lite") + 
-  geom_quiver(aes(u=delta_lon, v=delta_lat, colour = spd), center=TRUE)
+ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) + 
+  geom_quiver(vecsize=0, center = TRUE) + 
+  borders("state")
 ```
 
-![](man/figures/README-windplot-1.png)<!-- -->
+![](man/figures/README-sealplot-centered-1.png)<!-- -->

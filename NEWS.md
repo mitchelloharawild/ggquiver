@@ -1,4 +1,5 @@
 # ggquiver (development version)
+* Remove suggest for ggmap due to upstream api requirements.
 
 # ggquiver 0.3.2 (6 December 2021)
 * Improve usage of plot coordinate system when scaling arrow size (#9).
