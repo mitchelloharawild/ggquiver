@@ -1,4 +1,4 @@
-# ggquiver (development version)
+# ggquiver 0.3.3
 * Remove suggest for ggmap due to upstream api requirements.
 
 # ggquiver 0.3.2 (6 December 2021)
