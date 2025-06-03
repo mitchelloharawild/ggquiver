@@ -15,7 +15,7 @@ library(dplyr)
 ```
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/workflows/R-CMD-check/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions)
+[![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
 [![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
 <!-- badges: end -->

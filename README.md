@@ -1,13 +1,15 @@
 
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/workflows/R-CMD-check/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
-[![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
+[![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver.png)](https://cran.r-project.org/package=ggquiver)
+[![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen.png)](https://cran.r-project.org/package=ggquiver)
 <!-- badges: end -->
 
-# ggquiver
+# ggquiver <a href="http://pkg.mitchelloharawild.com/ggquiver"><img src="man/figures/logo.svg" align="right" height="139" alt="ggquiver website" /></a>
 
 Quiver plots for ggplot2. An extension of ‘ggplot2’ to provide quiver
 plots to visualise vector fields. This functionality is implemented
@@ -47,7 +49,7 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
   geom_quiver()
 ```
 
-![](man/figures/README-quiverplot-1.png)<!-- -->
+![](man/figures/README-quiverplot-1.png)
 
 The *ggplot2* example for seal movements is easily reproduced, with
 appropriately scaled arrowhead sizes. Here, the vecsize is set to zero
@@ -59,7 +61,7 @@ ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
   borders("state")
 ```
 
-![](man/figures/README-sealplot-1.png)<!-- -->
+![](man/figures/README-sealplot-1.png)
 
 Quiver plot arrows can be centered about x and y coordinates, which is
 useful when working with maps and scaled vectors.
@@ -70,4 +72,4 @@ ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
   borders("state")
 ```
 
-![](man/figures/README-sealplot-centered-1.png)<!-- -->
+![](man/figures/README-sealplot-centered-1.png)
