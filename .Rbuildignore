@@ -1,11 +1,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^README\.Rmd$
+^README\.qmd$
 ^README-.*\.png$
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^_pkgdown\.yml$
 ^docs$
+^hex$
 ^\.github$
 ^pkgdown$
 ^CRAN-RELEASE$
