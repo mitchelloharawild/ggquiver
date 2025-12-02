@@ -49,20 +49,34 @@ StatQuiver <- ggplot2::ggproto(
       data$u <- as.numeric(scale(data$u))
       data$v <- as.numeric(scale(data$v))
     }
+    
+    # Invert scaling on positional aesthetics
+    data$x <- scales$x$get_transformation()$inverse(data$x)
+    data$y <- scales$y$get_transformation()$inverse(data$y)
+
     gridpoints <- c(abs(diff(sort(unique(data$x)))), abs(diff(sort(unique(data$y)))))
     gridsize <- min(gridpoints, na.rm = TRUE)
     if (is.null(vecsize)) {
       # Detect if x and y form a grid
       vecsize <- if (length(unique(round(gridpoints, 2))) > 2) 0 else 1
     }
-    center <- if (center) 0.5 else 0
-    data <- data[with(data, u != 0 | v != 0),]
     data$veclength <- with(data, sqrt(u ^ 2 + v ^ 2))
-    data$vectorsize <-  if (vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
-    data$xend <- with(data, x + (1 - center) * u * vectorsize)
-    data$yend <- with(data, y + (1 - center) * v * vectorsize)
-    data$x <- with(data, x - center * u * vectorsize)
-    data$y <- with(data, y - center * v * vectorsize)
-    data
+    data$vectorsize <- if (vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
+
+    # Compute vector start and end positions on original scale
+    c <- if (center) 0.5 else 0
+    data$xend <- with(data, x + (1 - c) * u * vectorsize)
+    data$yend <- with(data, y + (1 - c) * v * vectorsize)
+    data$x <- with(data, x - c * u * vectorsize)
+    data$y <- with(data, y - c * v * vectorsize)
+
+    # Apply scale transformations to vectors
+    transform(
+      data,
+      x = scales$x$transform(x),
+      y = scales$y$transform(y),
+      xend = scales$x$transform(xend),
+      yend = scales$y$transform(yend)
+    )
   }
 )

@@ -56,9 +56,9 @@ geom_quiver <- function(mapping = NULL, data = NULL,
 GeomQuiver <- ggproto(
   "GeomQuiver", ggplot2::GeomSegment,
   draw_panel = function(data, panel_params, coord, arrow = NULL, lineend = "butt", na.rm = FALSE) {
-    # Compute appropriate arrow size
+    # Apply coordinate transformations to get proper arrow lengths
     if(inherits(coord, "CoordMap")) {
-      # Get around CoordMap transform method not transforming xend and yend
+      # Workaround for CoordMap transform method not transforming xend and yend
       t_data <- coord$transform(data[c("x", "y")], panel_params)
       t_data[c("xend", "yend")] <- coord$transform(
         `colnames<-`(data[c("xend", "yend")], c("x", "y")),
