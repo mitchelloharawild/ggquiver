@@ -44,7 +44,7 @@ automatically adjusted to fit within the grid.
 ``` r
 library(ggplot2)
 library(ggquiver)
-expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) %>%
+expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) |> 
   ggplot(aes(x=x,y=y,u=cos(x),v=sin(y))) +
   geom_quiver()
 ```
@@ -56,9 +56,17 @@ appropriately scaled arrowhead sizes. Here, the vecsize is set to zero
 to not resize the vectors.
 
 ``` r
-ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) + 
-  geom_quiver(vecsize=0) + 
-  borders("state")
+library(maps)
+world <- sf::st_as_sf(map('world', plot = FALSE, fill = TRUE))
+
+ggplot(seals) + 
+  geom_quiver(
+    aes(x=long, y=lat, u=delta_long, v=delta_lat),
+    vecsize=0
+  ) + 
+  geom_sf(data = world) +
+  coord_sf(xlim = c(-173.8, -117.8), ylim = c(28.7, 50.7), expand = FALSE) + 
+  labs(title = "Seal movements", x = NULL, y = NULL)
 ```
 
 ![](man/figures/README-sealplot-1.png)
@@ -67,9 +75,14 @@ Quiver plot arrows can be centered about x and y coordinates, which is
 useful when working with maps and scaled vectors.
 
 ``` r
-ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) + 
-  geom_quiver(vecsize=0, center = TRUE) + 
-  borders("state")
+ggplot(seals) + 
+  geom_quiver(
+    aes(x=long, y=lat, u=delta_long, v=delta_lat),
+    vecsize=0, center = TRUE
+  ) + 
+  geom_sf(data = world) +
+  coord_sf(xlim = c(-173.8, -117.8), ylim = c(28.7, 50.7), expand = FALSE) + 
+  labs(title = "Seal movements (centered arrows)", x = NULL, y = NULL)
 ```
 
 ![](man/figures/README-sealplot-centered-1.png)
