@@ -10,7 +10,6 @@ Depends:
 Imports:
     ggplot2
 Suggests: 
-    dplyr,
     maps,
     sf,
     pkgdown,
