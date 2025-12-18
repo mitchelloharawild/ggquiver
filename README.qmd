@@ -15,11 +15,11 @@ library(ggquiver)
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
-[![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
+[![Downloads](https://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
 <!-- badges: end -->
 
-# ggquiver <a href="http://pkg.mitchelloharawild.com/ggquiver/"><img src="man/figures/logo.svg" align="right" height="139" alt="ggquiver website" /></a>
+# ggquiver <a href="https://pkg.mitchelloharawild.com/ggquiver/"><img src="man/figures/logo.svg" align="right" height="139" alt="ggquiver website" /></a>
 
 Quiver plots for ggplot2. An extension of 'ggplot2' to provide quiver plots to 
 visualise vector fields. This functionality is implemented using a geom to 
