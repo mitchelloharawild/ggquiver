@@ -1,4 +1,4 @@
-# ggquiver (development version)
+# ggquiver 0.4.0
 * Arrows now respect scale transformations on x/y aesthetics (#13).
 * Arrows now support `grid::arrow()` appearance options (#14).
 
