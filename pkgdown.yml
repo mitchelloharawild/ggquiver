@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-12-02T04:11Z
+last_built: 2025-12-18T07:55Z
 urls:
   reference: http://pkg.mitchelloharawild.com/ggquiver/reference
   article: http://pkg.mitchelloharawild.com/ggquiver/articles
