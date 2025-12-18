@@ -9,7 +9,7 @@
 [![Downloads](http://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen.png)](https://cran.r-project.org/package=ggquiver)
 <!-- badges: end -->
 
-# ggquiver <a href="http://pkg.mitchelloharawild.com/ggquiver"><img src="man/figures/logo.svg" align="right" height="139" alt="ggquiver website" /></a>
+# ggquiver <a href="http://pkg.mitchelloharawild.com/ggquiver/"><img src="man/figures/logo.svg" align="right" height="139" alt="ggquiver website" /></a>
 
 Quiver plots for ggplot2. An extension of ‘ggplot2’ to provide quiver
 plots to visualise vector fields. This functionality is implemented
