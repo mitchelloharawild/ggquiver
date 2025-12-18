@@ -84,3 +84,17 @@ ggplot(seals) +
   coord_sf(xlim = c(-173.8, -117.8), ylim = c(28.7, 50.7), expand = FALSE) + 
   labs(title = "Seal movements (centered arrows)", x = NULL, y = NULL)
 ```
+
+The arrows can be customised using the `arrow` parameter from `grid::arrow()`. For example, to use closed arrowheads:
+
+```{r sealplot-custom}
+ggplot(seals) + 
+  geom_quiver(
+    aes(x=long, y=lat, u=delta_long, v=delta_lat),
+    vecsize=0, center = TRUE,
+    arrow = arrow(type = "closed")
+  ) + 
+  geom_sf(data = world) +
+  coord_sf(xlim = c(-173.8, -117.8), ylim = c(28.7, 50.7), expand = FALSE) + 
+  labs(title = "Seal movements (closed arrows)", x = NULL, y = NULL)
+```
