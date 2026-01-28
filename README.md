@@ -1,12 +1,11 @@
 
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mitchelloharawild/ggquiver/actions/workflows/R-CMD-check.yaml)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ggquiver.png)](https://cran.r-project.org/package=ggquiver)
-[![Downloads](https://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen.png)](https://cran.r-project.org/package=ggquiver)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ggquiver)](https://cran.r-project.org/package=ggquiver)
+[![Downloads](https://cranlogs.r-pkg.org/badges/ggquiver?color=brightgreen)](https://cran.r-project.org/package=ggquiver)
 <!-- badges: end -->
 
 # ggquiver <a href="https://pkg.mitchelloharawild.com/ggquiver/"><img src="man/figures/logo.svg" align="right" height="139" alt="ggquiver website" /></a>
@@ -49,7 +48,7 @@ expand.grid(x=seq(0,pi,pi/12), y=seq(0,pi,pi/12)) |>
   geom_quiver()
 ```
 
-![](man/figures/README-quiverplot-1.png)
+![](man/figures/README-quiverplot-1.png)<!-- -->
 
 The *ggplot2* example for seal movements is easily reproduced, with
 appropriately scaled arrowhead sizes. Here, the vecsize is set to zero
@@ -69,7 +68,7 @@ ggplot(seals) +
   labs(title = "Seal movements", x = NULL, y = NULL)
 ```
 
-![](man/figures/README-sealplot-1.png)
+![](man/figures/README-sealplot-1.png)<!-- -->
 
 Quiver plot arrows can be centered about x and y coordinates, which is
 useful when working with maps and scaled vectors.
@@ -85,7 +84,7 @@ ggplot(seals) +
   labs(title = "Seal movements (centered arrows)", x = NULL, y = NULL)
 ```
 
-![](man/figures/README-sealplot-centered-1.png)
+![](man/figures/README-sealplot-centered-1.png)<!-- -->
 
 The arrows can be customised using the `arrow` parameter from
 `grid::arrow()`. For example, to use closed arrowheads:
@@ -102,4 +101,4 @@ ggplot(seals) +
   labs(title = "Seal movements (closed arrows)", x = NULL, y = NULL)
 ```
 
-![](man/figures/README-sealplot-custom-1.png)
+![](man/figures/README-sealplot-custom-1.png)<!-- -->
