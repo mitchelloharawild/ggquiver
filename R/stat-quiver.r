@@ -68,7 +68,10 @@ StatQuiver <- ggplot2::ggproto(
       vecsize <- if (is_regular(x_diffs) && is_regular(y_diffs)) 1 else 0
     }
     data$veclength <- with(data, sqrt(u ^ 2 + v ^ 2))
-    data$vectorsize <- if (vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
+    maxveclength <- max(data$veclength, na.rm = TRUE)
+    # When every vector has zero length there is nothing to scale against
+    # (this would otherwise divide by zero and turn every position into NA).
+    data$vectorsize <- if (vecsize == 0 || maxveclength == 0) 1 else gridsize / maxveclength * vecsize
 
     # Compute vector start and end positions on original scale
     c <- if (center) 0.5 else 0
