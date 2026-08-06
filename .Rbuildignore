@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^README\.qmd$
+^README\.Rmd$
 ^README-.*\.png$
 ^\.travis\.yml$
 ^cran-comments\.md$
@@ -8,5 +8,7 @@
 ^docs$
 ^hex$
 ^\.github$
+^\.claude$
 ^pkgdown$
 ^CRAN-RELEASE$
+^revdep$
