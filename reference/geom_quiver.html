@@ -20,7 +20,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggquiver</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
 
     <div id="format">
     <h2>Format</h2>
-    <p>An object of class <code>GeomQuiver</code> (inherits from <code>GeomSegment</code>, <code>Geom</code>, <code>ggproto</code>, <code>gg</code>) of length 2.</p>
+    <p>An object of class <code>GeomQuiver</code> (inherits from <code>GeomSegment</code>, <code>Geom</code>, <code>ggproto</code>, <code>gg</code>) of length 3.</p>
 <p>An object of class <code>StatQuiver</code> (inherits from <code>Stat</code>, <code>ggproto</code>, <code>gg</code>) of length 3.</p>
     </div>
     <div id="arguments">
@@ -259,6 +259,10 @@ give the geom as <code>"point"</code>.</p></li>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_borders.html" class="external-link">borders</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`borders()` was deprecated in ggplot2 4.0.0.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `annotation_borders()` instead.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `geom_quiver()` arrow angles can be misleading with asymmetric aspect ratios.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> x and y are not drawn to the same scale, so on-screen arrow angles differ</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   from the true angles.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use `coord_fixed()` or `coord_equal()` for accurate arrow angles.</span>
 <span class="r-plt img"><img src="geom_quiver-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Vector field from a joint function of x and y</span></span></span>
