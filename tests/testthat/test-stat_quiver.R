@@ -58,3 +58,15 @@ test_that("a single data point does not corrupt positions", {
   expect_equal(d2$xend, 2)
   expect_equal(d2$yend, 2)
 })
+
+test_that("missing x/y aesthetics give a clear error", {
+  library(ggplot2)
+  # x and y were missing from required_aes, so omitting them produced a
+  # cryptic low-level error ("attempt to apply non-function") from deep
+  # inside compute_panel() instead of ggplot2's standard missing-aesthetics
+  # message.
+  df <- data.frame(u = 1:3, v = 1:3)
+  p <- ggplot(df, aes(u = u, v = v)) + geom_quiver()
+
+  expect_error(layer_data(p), "requires the following missing aesthetics")
+})

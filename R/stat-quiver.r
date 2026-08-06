@@ -42,7 +42,7 @@ stat_quiver <- function(mapping = NULL, data = NULL,
 #' @export
 StatQuiver <- ggplot2::ggproto(
   "StatQuiver", ggplot2::Stat,
-  required_aes = c("u", "v"),
+  required_aes = c("x", "y", "u", "v"),
 
   compute_panel = function(self, data, scales, center=FALSE, rescale=FALSE, vecsize=NULL, na.rm=FALSE) {
     if (rescale) {
