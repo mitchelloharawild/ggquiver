@@ -157,6 +157,11 @@ give the geom as \code{"point"}.
 \description{
 Displays the direction and length of vectors on a graph.
 }
+\section{Vector fields from functions}{
+
+No special handling is needed to plot the vector field of a mathematical function: \code{u} and \code{v} are ordinary aesthetics, so a grid of coordinates from \code{expand.grid()} can be mapped through them directly, e.g. \code{aes(u = cos(x), v = sin(y))}. The automatic grid-based \code{vecsize} scaling detects the spacing of the generated grid and sizes the arrows to fit, so the resolution of the grid can be changed freely without arrows overlapping. When \code{u} and \code{v} are more naturally computed together from a single \code{function(x, y)} (for example, a system of differential equations), evaluate it once over the grid and bind the result instead — see the last example below.
+}
+
 \section{Computed variables}{
 
 \describe{
@@ -178,6 +183,13 @@ ggplot(field, aes(x=x,y=y,u=cos(x),v=sin(y))) +
 ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
   geom_quiver(vecsize=NULL) +
   borders("state")
+
+# Vector field from a joint function of x and y
+spiral <- function(x, y) data.frame(u = -y - 0.3*x, v = x - 0.3*y)
+field <- expand.grid(x=seq(-2,2,length.out=11), y=seq(-2,2,length.out=11))
+field <- cbind(field, spiral(field$x, field$y))
+ggplot(field, aes(x, y, u=u, v=v)) +
+  geom_quiver()
 
 }
 \keyword{datasets}

@@ -8,6 +8,9 @@
 #' @param rescale If \code{FALSE} (the default), the vectors will not be rescaled. If \code{TRUE}, the vectors given by (u, v) will be rescaled using the \code{scale} function.
 #' @param vecsize By default (NULL), vectors sizing is automatically determined. If a grid can be identified, they will be scaled to the grid, if not, the vectors will not be scaled. By specifying a numeric input here, the length of all arrows can be adjusted. Setting vecsize to zero will prevent scaling the arrows.
 #'
+#' @section Vector fields from functions:
+#' No special handling is needed to plot the vector field of a mathematical function: \code{u} and \code{v} are ordinary aesthetics, so a grid of coordinates from \code{expand.grid()} can be mapped through them directly, e.g. \code{aes(u = cos(x), v = sin(y))}. The automatic grid-based \code{vecsize} scaling detects the spacing of the generated grid and sizes the arrows to fit, so the resolution of the grid can be changed freely without arrows overlapping. When \code{u} and \code{v} are more naturally computed together from a single \code{function(x, y)} (for example, a system of differential equations), evaluate it once over the grid and bind the result instead — see the last example below.
+#'
 #' @examples
 #' library(ggplot2)
 #' # Quiver plots of mathematical functions
@@ -19,6 +22,13 @@
 #' ggplot(seals, aes(x=long, y=lat, u=delta_long, v=delta_lat)) +
 #'   geom_quiver(vecsize=NULL) +
 #'   borders("state")
+#'
+#' # Vector field from a joint function of x and y
+#' spiral <- function(x, y) data.frame(u = -y - 0.3*x, v = x - 0.3*y)
+#' field <- expand.grid(x=seq(-2,2,length.out=11), y=seq(-2,2,length.out=11))
+#' field <- cbind(field, spiral(field$x, field$y))
+#' ggplot(field, aes(x, y, u=u, v=v)) +
+#'   geom_quiver()
 #'
 #' @importFrom ggplot2 layer
 #'
