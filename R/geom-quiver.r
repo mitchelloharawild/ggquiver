@@ -66,9 +66,9 @@ geom_quiver <- function(mapping = NULL, data = NULL,
 GeomQuiver <- ggproto(
   "GeomQuiver", ggplot2::GeomSegment,
   draw_panel = function(
-    data, panel_params, coord, 
-    arrow = grid::arrow(), 
-    lineend = "butt", na.rm = FALSE
+    data, panel_params, coord,
+    arrow = grid::arrow(),
+    lineend = "butt"
   ) {
     # Apply coordinate transformations to get proper arrow lengths
     if(inherits(coord, "CoordMap")) {
