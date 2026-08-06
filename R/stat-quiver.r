@@ -77,12 +77,10 @@ StatQuiver <- ggplot2::ggproto(
       # (this would otherwise divide by zero and turn every position into NA).
       1
     } else if (is.na(gridsize)) {
-      warning(
-        "stat_quiver: could not determine a grid size to scale `vecsize` ",
-        "against (at least two distinct x or y values are needed); ",
-        "vectors will not be scaled.",
-        call. = FALSE
-      )
+      cli::cli_warn(c(
+        "!" = "{.fn stat_quiver} could not determine a grid size to scale {.arg vecsize} against.",
+        "i" = "At least two distinct x or y values are needed; vectors will not be scaled."
+      ))
       1
     } else {
       gridsize / maxveclength * vecsize
