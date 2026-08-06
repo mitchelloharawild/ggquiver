@@ -54,11 +54,18 @@ StatQuiver <- ggplot2::ggproto(
     data$x <- scales$x$get_transformation()$inverse(data$x)
     data$y <- scales$y$get_transformation()$inverse(data$y)
 
-    gridpoints <- c(abs(diff(sort(unique(data$x)))), abs(diff(sort(unique(data$y)))))
+    x_diffs <- abs(diff(sort(unique(data$x))))
+    y_diffs <- abs(diff(sort(unique(data$y))))
+    gridpoints <- c(x_diffs, y_diffs)
     gridsize <- min(gridpoints, na.rm = TRUE)
     if (is.null(vecsize)) {
-      # Detect if x and y form a grid
-      vecsize <- if (length(unique(round(gridpoints, 2))) > 2) 0 else 1
+      # Detect if x and y form a grid. Regularity is checked separately for
+      # each dimension (rather than pooling x- and y-spacings together),
+      # since irregular real-world data (e.g. GPS coordinates) can otherwise
+      # be misclassified as a grid whenever the x- and y-spacings happen to
+      # coincide.
+      is_regular <- function(diffs) length(diffs) == 0 || length(unique(round(diffs, 2))) == 1
+      vecsize <- if (is_regular(x_diffs) && is_regular(y_diffs)) 1 else 0
     }
     data$veclength <- with(data, sqrt(u ^ 2 + v ^ 2))
     data$vectorsize <- if (vecsize == 0) 1 else gridsize / max(data$veclength, na.rm = TRUE) * vecsize
