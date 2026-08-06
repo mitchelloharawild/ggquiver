@@ -1,11 +1,14 @@
+## Test environments
+* local ubuntu 24.04 install, R 4.5.2
+* ubuntu-latest (on GitHub actions), R-devel, R-release, R-oldrel-1, R-oldrel-2, R-oldrel-3, R-oldrel-4
+* macOS-latest (on GitHub actions), R-release
+* windows-latest (on GitHub actions), R-release, R-oldrel-4
+* win-builder, R-devel, R-release, R-oldrelease
+
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
 
-## Downstream dependencies
+## Revdep checks
 
-We checked 2 reverse dependencies (CoSMoS, eks), comparing R CMD check
-results across CRAN and dev versions of this package.
-
-* We saw 0 new problems
-* We failed to check 0 packages
+All reverse dependencies have been checked, none have changed to worse.
