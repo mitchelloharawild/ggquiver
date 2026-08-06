@@ -1,3 +1,13 @@
+# ggquiver 0.5.0
+* Fixed automatic `vecsize` grid detection incorrectly rescaling arrows for 
+  irregularly spaced data (e.g. GPS coordinates) whenever the x- and y-spacings
+  happened to coincide.
+* Automatic `vecsize` grid detection now warns instead of erroring when a grid 
+  size can't be determined (e.g. a single data point), leaving arrows unscaled.
+* `geom_quiver()` now hints to use `coord_fixed()`/`coord_equal()` if needed (#10).
+* Legend keys now show an arrowhead, matching the arrows drawn in the panel.
+
+
 # ggquiver 0.4.0
 * Arrows now respect scale transformations on x/y aesthetics (#13).
 * Arrows now support `grid::arrow()` appearance options (#14).
