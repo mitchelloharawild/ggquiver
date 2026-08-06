@@ -57,21 +57,36 @@ StatQuiver <- ggplot2::ggproto(
     x_diffs <- abs(diff(sort(unique(data$x))))
     y_diffs <- abs(diff(sort(unique(data$y))))
     gridpoints <- c(x_diffs, y_diffs)
-    gridsize <- min(gridpoints, na.rm = TRUE)
+    # With a single distinct x value and a single distinct y value (e.g. one
+    # data point), no spacing can be measured in either dimension and no
+    # grid size can be identified.
+    gridsize <- if (length(gridpoints) > 0) min(gridpoints, na.rm = TRUE) else NA_real_
+    is_regular <- function(diffs) length(diffs) == 0 || length(unique(round(diffs, 2))) == 1
     if (is.null(vecsize)) {
       # Detect if x and y form a grid. Regularity is checked separately for
       # each dimension (rather than pooling x- and y-spacings together),
       # since irregular real-world data (e.g. GPS coordinates) can otherwise
       # be misclassified as a grid whenever the x- and y-spacings happen to
       # coincide.
-      is_regular <- function(diffs) length(diffs) == 0 || length(unique(round(diffs, 2))) == 1
-      vecsize <- if (is_regular(x_diffs) && is_regular(y_diffs)) 1 else 0
+      vecsize <- if (!is.na(gridsize) && is_regular(x_diffs) && is_regular(y_diffs)) 1 else 0
     }
     data$veclength <- with(data, sqrt(u ^ 2 + v ^ 2))
     maxveclength <- max(data$veclength, na.rm = TRUE)
-    # When every vector has zero length there is nothing to scale against
-    # (this would otherwise divide by zero and turn every position into NA).
-    data$vectorsize <- if (vecsize == 0 || maxveclength == 0) 1 else gridsize / maxveclength * vecsize
+    data$vectorsize <- if (vecsize == 0 || maxveclength == 0) {
+      # When every vector has zero length there is nothing to scale against
+      # (this would otherwise divide by zero and turn every position into NA).
+      1
+    } else if (is.na(gridsize)) {
+      warning(
+        "stat_quiver: could not determine a grid size to scale `vecsize` ",
+        "against (at least two distinct x or y values are needed); ",
+        "vectors will not be scaled.",
+        call. = FALSE
+      )
+      1
+    } else {
+      gridsize / maxveclength * vecsize
+    }
 
     # Compute vector start and end positions on original scale
     c <- if (center) 0.5 else 0

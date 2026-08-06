@@ -31,3 +31,30 @@ test_that("all-zero vectors do not divide by zero", {
   expect_equal(d$xend, 1:3)
   expect_equal(d$yend, 1:3)
 })
+
+test_that("a single data point does not corrupt positions", {
+  library(ggplot2)
+  # With only one distinct x value and one distinct y value, no grid spacing
+  # can be measured. This previously produced `min(): no non-missing
+  # arguments to min; returning Inf`, whose Inf/NaN then corrupted even the
+  # arrow's start position (x, y), not just its length.
+  df <- data.frame(x = 1, y = 1, u = 1, v = 1)
+
+  d <- expect_no_warning(
+    layer_data(ggplot(df, aes(x, y, u = u, v = v)) + geom_quiver())
+  )
+  expect_equal(d$x, 1)
+  expect_equal(d$y, 1)
+  expect_equal(d$xend, 2)
+  expect_equal(d$yend, 2)
+
+  # An explicit, non-zero `vecsize` cannot be honoured either (there is no
+  # grid to scale against), but should warn and fall back gracefully rather
+  # than producing Inf/NaN.
+  expect_warning(
+    d2 <- layer_data(ggplot(df, aes(x, y, u = u, v = v)) + geom_quiver(vecsize = 2)),
+    "could not determine a grid size"
+  )
+  expect_equal(d2$xend, 2)
+  expect_equal(d2$yend, 2)
+})
