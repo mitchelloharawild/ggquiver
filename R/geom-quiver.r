@@ -65,6 +65,29 @@ geom_quiver <- function(mapping = NULL, data = NULL,
 #' @export
 GeomQuiver <- ggproto(
   "GeomQuiver", ggplot2::GeomSegment,
+  draw_key = function(data, params, size) {
+    # GeomSegment's draw_key already draws an arrowhead when an `arrow` is
+    # present in params, but (unlike draw_panel) it never sees draw_panel's
+    # default `arrow = grid::arrow()` unless the user set `arrow` explicitly
+    # in the layer call. Fill in the same default here so quiver legend keys
+    # look like arrows rather than plain lines.
+    if (!"arrow" %in% names(params)) {
+      params$arrow <- grid::arrow()
+    }
+    # The panel scales arrowhead length to each vector's length, but the key
+    # has no such reference: an arrow sized for a full-length panel vector
+    # (e.g. the default 0.25in) can dwarf the small legend key, especially
+    # for "closed" arrowheads. Cap the key's arrowhead at a fraction of the
+    # key size so it always reads as an arrow rather than a solid wedge.
+    if (!is.null(params$arrow)) {
+      max_length <- grid::unit(min(size) * 0.3, "mm")
+      if (grid::convertUnit(params$arrow$length, "mm", valueOnly = TRUE) >
+          grid::convertUnit(max_length, "mm", valueOnly = TRUE)) {
+        params$arrow$length <- max_length
+      }
+    }
+    ggplot2::GeomSegment$draw_key(data, params, size)
+  },
   draw_panel = function(
     data, panel_params, coord,
     arrow = grid::arrow(),

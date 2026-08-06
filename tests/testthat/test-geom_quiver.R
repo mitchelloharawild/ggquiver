@@ -65,6 +65,20 @@ test_that("Warns when coord isn't fixed and x/y aspect ratio isn't ~1:1", {
   )
 })
 
+test_that("Legend key shows an arrowhead", {
+  skip_if_not_installed("vdiffr")
+  library(ggplot2)
+  plotdata <- expand.grid(x = seq(0, pi, pi / 12), y = seq(0, pi, pi / 12))
+  plotdata$u <- cos(plotdata$x)
+  plotdata$v <- sin(plotdata$y)
+  plotdata$g <- ifelse(plotdata$x < pi / 2, "a", "b")
+
+  p <- plotdata |>
+    ggplot(aes(x = x, y = y, u = u, v = v, colour = g)) +
+    geom_quiver()
+  vdiffr::expect_doppelganger("quiver plot with legend arrowhead", p)
+})
+
 test_that("Custom arrows with grid::arrow", {
   skip_if_not_installed("vdiffr")
   library(ggplot2)
