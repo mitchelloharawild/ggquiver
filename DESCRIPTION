@@ -8,6 +8,7 @@ Description: An extension of 'ggplot2' to provide quiver plots to visualise vect
 Depends:
     R (>= 3.2.0)
 Imports:
+    cli,
     ggplot2 (>= 3.5.0),
     grid
 Suggests: 

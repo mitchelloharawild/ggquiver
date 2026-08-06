@@ -36,6 +36,35 @@ test_that("Simple trig quiver plot", {
   vdiffr::expect_doppelganger("quiver plot with random data", p5)
 })
 
+test_that("Warns when coord isn't fixed and x/y aspect ratio isn't ~1:1", {
+  library(ggplot2)
+  d <- data.frame(x = c(0, 1000), y = c(0, 1), u = c(1, 1), v = c(1, 1))
+
+  p <- ggplot(d, aes(x = x, y = y, u = u, v = v)) +
+    geom_quiver()
+  expect_message(
+    ggplotGrob(p),
+    "arrow angles can be misleading"
+  )
+
+  # coord_fixed() enforces a fixed aspect ratio, so no warning is needed
+  p_fixed <- p + coord_fixed()
+  expect_no_message(
+    ggplotGrob(p_fixed),
+    message = "arrow angles can be misleading"
+  )
+
+  # Even a fairly small (~20%) deviation from a 1:1 aspect ratio is enough
+  # to visibly skew arrow angles, so it should still be flagged.
+  d_small <- data.frame(x = c(0, 12), y = c(0, 10), u = c(1, 1), v = c(1, 1))
+  p_small <- ggplot(d_small, aes(x = x, y = y, u = u, v = v)) +
+    geom_quiver()
+  expect_message(
+    ggplotGrob(p_small),
+    "arrow angles can be misleading"
+  )
+})
+
 test_that("Custom arrows with grid::arrow", {
   skip_if_not_installed("vdiffr")
   library(ggplot2)

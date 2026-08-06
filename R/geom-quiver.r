@@ -70,6 +70,29 @@ GeomQuiver <- ggproto(
     arrow = grid::arrow(),
     lineend = "butt"
   ) {
+    # Arrow angles are only accurate for fixed-aspect coordinate systems.
+    # Raise a console message if the angles are distorted by free aspect ratios.
+    if (is.null(coord$aspect(panel_params))) {
+      x_range <- panel_params$x.range
+      y_range <- panel_params$y.range
+      if (length(x_range) == 2 && length(y_range) == 2) {
+        x_span <- diff(x_range)
+        y_span <- diff(y_range)
+        # Even a fairly small deviation from a 1:1 aspect ratio is enough to
+        # visibly skew arrow angles, so this only tolerates spans that are
+        # (nearly) equal rather than requiring some large mismatch.
+        if (!is.na(x_span) && !is.na(y_span) && x_span > 0 && y_span > 0) {
+          if (abs(x_span - y_span) > 0.01) {
+            cli::cli_inform(c(
+              "!" = "{.fn geom_quiver} arrow angles can be misleading with asymmetric aspect ratios.",
+              "i" = "x and y are not drawn to the same scale, so on-screen arrow angles differ from the true angles.",
+              "i" = "Use {.fn coord_fixed} or {.fn coord_equal} for accurate arrow angles."
+            ))
+          }
+        }
+      }
+    }
+
     # Apply coordinate transformations to get proper arrow lengths
     if(inherits(coord, "CoordMap")) {
       # Workaround for CoordMap transform method not transforming xend and yend
