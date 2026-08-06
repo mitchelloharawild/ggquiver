@@ -128,7 +128,7 @@ GeomQuiver <- ggproto(
       t_data <- coord$transform(data, panel_params)
     }
     
-    arrow$length <- arrow$length*10*with(t_data, sqrt((x - xend) ^ 2 + (y - yend) ^ 2) * 0.5)
+    arrow$length <- grid::unit(with(t_data, sqrt((x - xend) ^ 2 + (y - yend) ^ 2) * 0.5), "npc")
 
     # Re-use segments to produce arrows
     ggplot2::GeomSegment$draw_panel(
