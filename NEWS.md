@@ -1,3 +1,5 @@
+# ggquiver (development version)
+
 # ggquiver 0.5.0
 * Fixed automatic `vecsize` grid detection incorrectly rescaling arrows for 
   irregularly spaced data (e.g. GPS coordinates) whenever the x- and y-spacings
